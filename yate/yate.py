@@ -202,8 +202,6 @@ class MainFrame(wx.Frame):
     self.Bind(wx.EVT_MENU, self.OnNewTab, m_new)
     m_open = menu.Append(wx.ID_OPEN, "Open\tCtrl-O", "Open file.")
     self.Bind(wx.EVT_MENU, self.OnOpenTab, m_open)
-    m_quick_open = menu.Append(wx.NewId(), "QuickOpen\tCtrl-P", "QuickOpen file.")
-    self.Bind(wx.EVT_MENU, self.OnQuickOpenTab, m_quick_open)
     m_close = menu.Append(wx.ID_CLOSE, "Close\tCtrl-W", "Close tab.")
     self.Bind(wx.EVT_MENU, self.OnCloseTab, m_close)
     m_save = menu.Append(wx.ID_SAVE, "&Save\tCtrl-S", "Save tab.")
@@ -214,6 +212,8 @@ class MainFrame(wx.Frame):
     menuBar.Append(menu, "&File")
 
     menu = wx.Menu()
+    m_quick_open = menu.Append(wx.NewId(), "Go To File\tCtrl-T", "Go to file.")
+    self.Bind(wx.EVT_MENU, self.OnQuickOpenTab, m_quick_open)
     m_go_to = menu.Append(wx.NewId(), "Go To Line\tCtrl-L", "Go to line.")
     self.Bind(wx.EVT_MENU, self.OnGoToLine, m_go_to)
     m_next = menu.Append(wx.NewId(), "Next Tab\tCtrl-PAGEDOWN", "Next tab.")
