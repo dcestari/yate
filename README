@@ -3,6 +3,42 @@ yate - Yet Another Text Editor
 Is a programmer-oriented text editor that aims to be as fast as
 VIM or Emacs but with a useful GUI like Mac's TextMate.
 
+Please go to: http://dcestari.github.com/yate for more information
+
+INSTALLATION
+============
+
+- From PyPi (for end-users):
+
+   Yate comes as a Python Egg that you can install with "easy_install".
+
+   1. Download the dependencies (wxPython) to speed-up installation:
+     ~$ sudo apt-get install python-wxgtk2.8
+
+   2. Get and install the Egg:
+     ~$ sudo easy_install yate
+
+- From Source (for developers):
+
+   Yate uses the "setuptools" to ease installation and packaging.
+
+   1. Download the dependencies (wxPython) to speed-up installation:
+     ~$ sudo apt-get install python-wxgtk2.8
+
+   2. Clone the repository:
+     ~$ git clone https://github.com/dcestari/yate.git
+
+   3. Run the setup script:
+     ~/yate$ sudo python setup.py install
+
+USAGE
+=====
+
+To open a project folder with "yate" simply run:
+  ~$ yate path/to/my/project
+
+To open a file:
+  ~$ yate path/to/my/file.something
 
 --
 
