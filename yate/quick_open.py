@@ -47,6 +47,9 @@ class QuickOpenDialog(wx.Dialog):
       files = self.G.search(value)
       self.fileList.SetItems([f[0] for f in files])
 
+      if len(files) > 0:
+        self.fileList.SetSelection(0)
+
   def OnKeyDown(self, event):
     keycode = event.GetKeyCode()
 
