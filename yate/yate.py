@@ -6,6 +6,7 @@ import wx
 import wx.stc
 import wx.aui
 import fnmatch
+import ngram
 
 import syntax
 import config
@@ -225,6 +226,10 @@ class MainFrame(wx.Frame):
 
     self.SetMenuBar(menuBar)
 
+  def PrepareQuickOpen(self):
+    self.files.sort()
+    self.G = ngram.NGram(self.files)
+
   def OnGoToLine(self, event):
     editor = self.notebook.GetCurrentEditor()
 
@@ -262,7 +267,7 @@ class MainFrame(wx.Frame):
     dlg.Destroy()
 
   def OnQuickOpenTab(self, event):
-    dialog = QuickOpenDialog(None, self.files)
+    dialog = QuickOpenDialog(None, self.files, self.G)
     result = dialog.ShowModal()
 
     if result == wx.ID_OK:
@@ -324,6 +329,8 @@ def main():
       for name in files:
         fullpath = os.path.join(root, name)
         frame.files.append(os.path.relpath(fullpath, project))
+
+    frame.PrepareQuickOpen()
 
   frame.CenterOnScreen()
 

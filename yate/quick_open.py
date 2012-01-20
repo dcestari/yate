@@ -3,7 +3,7 @@ import difflib
 import ngram
 
 class QuickOpenDialog(wx.Dialog):
-  def __init__(self, parent, files):
+  def __init__(self, parent, files, G):
     wx.Dialog.__init__(self, parent, wx.ID_ANY, 'Quick Open')
     panel = wx.Panel(self)
     vbox = wx.BoxSizer(wx.VERTICAL)
@@ -12,8 +12,11 @@ class QuickOpenDialog(wx.Dialog):
     self.fileList = wx.ListBox(panel)
     
     self.files = files
-    self.G = ngram.NGram(self.files)
-    self.files.sort()
+
+    if not G:
+      self.G = ngram.NGram(self.files)
+    else:
+      self.G = G
 
     self.fileList.SetItems(self.files[:20])
     
