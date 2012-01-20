@@ -46,17 +46,6 @@ class QuickOpenDialog(wx.Dialog):
     else:
       files = self.G.search(value)
       self.fileList.SetItems([f[0] for f in files])
-#      files = []
-#      i = 0
-#      for f in self.files:
-#        if i > 20:
-#          break
-#        
-#        if f.startswith(value):
-#          files.append(f)
-#
-#      self.fileList.SetItems(files)#[f for f in self.files if f.startswith(value)])
-#difflib.get_close_matches(value, self.files))
 
   def OnKeyDown(self, event):
     keycode = event.GetKeyCode()
@@ -71,11 +60,4 @@ class QuickOpenDialog(wx.Dialog):
       self.filename.SetFocus()
     else:
       event.Skip()
-
-if __name__ == '__main__':
-  app = wx.App(0)
-  dialog = QuickOpenDialog(None, files=['hola', 'chao', 'hasta luego'])
-  dialog.ShowModal()
-  dialog.Destroy()
-  app.MainLoop()
 
