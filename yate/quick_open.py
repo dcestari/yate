@@ -22,6 +22,7 @@ class QuickOpenDialog(wx.Dialog):
     
     self.Bind(wx.EVT_TEXT, self.OnChange, self.filename)
     self.Bind(wx.EVT_LISTBOX_DCLICK, self.OnSelect, self.fileList)
+    self.Bind(wx.EVT_CHAR_HOOK, self.OnKeyDown)
 
     vbox.Add(self.filename, 0, wx.EXPAND)
     vbox.Add(self.fileList, 1, wx.EXPAND)
@@ -31,6 +32,9 @@ class QuickOpenDialog(wx.Dialog):
     self.fileToOpen = None
 
   def OnSelect(self, event):
+    self.OpenSelected()
+
+  def OpenSelected(self):
     self.fileToOpen = self.fileList.GetStringSelection()
     self.EndModal(wx.ID_OK)
 
@@ -53,6 +57,20 @@ class QuickOpenDialog(wx.Dialog):
 #
 #      self.fileList.SetItems(files)#[f for f in self.files if f.startswith(value)])
 #difflib.get_close_matches(value, self.files))
+
+  def OnKeyDown(self, event):
+    keycode = event.GetKeyCode()
+
+    if keycode == wx.WXK_ESCAPE:
+      self.EndModal(wx.ID_OK)
+    elif keycode == wx.WXK_RETURN:
+      self.OpenSelected()
+    elif keycode == wx.WXK_DOWN and wx.Window.FindFocus() == self.filename:
+      self.fileList.SetFocus()
+    elif keycode == wx.WXK_UP and wx.Window.FindFocus() == self.fileList and self.fileList.GetSelection() == 0:
+      self.filename.SetFocus()
+    else:
+      event.Skip()
 
 if __name__ == '__main__':
   app = wx.App(0)
