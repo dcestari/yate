@@ -45,7 +45,7 @@ class QuickOpenDialog(wx.Dialog):
       self.fileList.SetItems(self.files)
     else:
       files = self.G.search(value)
-      self.fileList.SetItems([f[0] for f in files])
+      self.fileList.SetItems([f[0] for f in files[:20]])
 
       if len(files) > 0:
         self.fileList.SetSelection(0)
