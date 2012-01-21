@@ -3,6 +3,8 @@ import difflib
 import ngram
 
 class QuickOpenDialog(wx.Dialog):
+  MAX_FILES_TO_SHOW = 20
+
   def __init__(self, parent, files, G):
     wx.Dialog.__init__(self, parent, wx.ID_ANY, 'Quick Open')
     panel = wx.Panel(self)
@@ -18,7 +20,7 @@ class QuickOpenDialog(wx.Dialog):
     else:
       self.G = G
 
-    self.fileList.SetItems(self.files[:20])
+    self.fileList.SetItems(self.files[:QuickOpenDialog.MAX_FILES_TO_SHOW])
     
     self.Bind(wx.EVT_TEXT, self.OnChange, self.filename)
     self.Bind(wx.EVT_LISTBOX_DCLICK, self.OnSelect, self.fileList)
@@ -43,10 +45,10 @@ class QuickOpenDialog(wx.Dialog):
     value = self.filename.GetValue()
 
     if len(value) == 0:
-      self.fileList.SetItems(self.files)
+      self.fileList.SetItems(self.files[:QuickOpenDialog.MAX_FILES_TO_SHOW])
     else:
       files = self.G.search(value)
-      self.fileList.SetItems([f[0] for f in files[:20]])
+      self.fileList.SetItems([f[0] for f in files[:QuickOpenDialog.MAX_FILES_TO_SHOW]])
 
       if len(files) > 0:
         self.fileList.SetSelection(0)
