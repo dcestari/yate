@@ -319,16 +319,12 @@ def main():
 
   if project:
     for root, dirs, files in os.walk(project):
-      if ".hg" in dirs:
-        dirs.remove(".hg")
-      if ".git" in dirs:
-        dirs.remove(".git")
-      if ".svn" in dirs:
-        dirs.remove(".svn")
+      dirs[:] = [d for d in dirs if not d.startswith(".")]
 
       for name in files:
-        fullpath = os.path.join(root, name)
-        frame.files.append(os.path.relpath(fullpath, project))
+        if not name.startswith("."):
+          fullpath = os.path.join(root, name)
+          frame.files.append(os.path.relpath(fullpath, project))
 
     frame.PrepareQuickOpen()
 
