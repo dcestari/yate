@@ -30,6 +30,7 @@ class QuickOpenDialog(wx.Dialog):
     self.filename.SetFocus()
 
     self.fileToOpen = None
+    self.CenterOnScreen()
 
   def OnSelect(self, event):
     self.OpenSelected()
