@@ -20,5 +20,22 @@ config = {
       'constant' : [wx.stc.STC_HPHP_NUMBER],
     },
   },
+  'ruby' : {
+    'lexer' : wx.stc.STC_LEX_RUBY,
+    'file_patterns' : ['*.rb'],
+    'style_bits' : 5,
+    'keywords'  : 'def class module require if end self true false nil ' +
+      # ActiveRecord
+      'belongs_to has_many validates_presence_of validates_length_of',
+    'keyword_index' : 0,
+    'styles'   : {
+      'default'  : [wx.stc.STC_RB_DEFAULT],
+      'comment'  : [wx.stc.STC_RB_COMMENTLINE],
+      'keyword'  : [wx.stc.STC_RB_WORD],
+      'variable' : [wx.stc.STC_RB_INSTANCE_VAR, wx.stc.STC_RB_CLASS_VAR],
+      'string'   : [wx.stc.STC_RB_STRING, wx.stc.STC_RB_CHARACTER, wx.stc.STC_RB_STRING_Q, wx.stc.STC_RB_STRING_QQ, wx.stc.STC_RB_STRING_QX, wx.stc.STC_RB_STRING_QR, wx.stc.STC_RB_STRING_QW],
+      'constant' : [wx.stc.STC_RB_SYMBOL, wx.stc.STC_RB_NUMBER],
+    },
+  },
 }
 
