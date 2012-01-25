@@ -7,6 +7,7 @@ config = {
     'style_bits' : 7,
     'keywords'   : "class function public protected private require_once dirname error_reporting ini_set include echo true false __FILE__ __DIR__ __CLASS__ chdir die static in_array array switch case if list foreach for while",
     'keyword_index' : 4,
+    'indent_style' : 'cindent',
     'styles'   : {
       'default'  : [wx.stc.STC_H_DEFAULT, wx.stc.STC_HPHP_DEFAULT],
       'comment'  : [wx.stc.STC_H_COMMENT, wx.stc.STC_HPHP_COMMENT, wx.stc.STC_HPHP_COMMENTLINE],

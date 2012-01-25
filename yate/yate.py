@@ -13,6 +13,7 @@ import config
 import json_theme_parser as theme
 from project_tree import ProjectTree
 from quick_open import QuickOpenDialog
+from c_indent import CIndent
 
 faces = {
   'times': 'Times',
@@ -31,6 +32,14 @@ class Editor(wx.stc.StyledTextCtrl):
 
     if filename != None:
       self.Open(filename)
+
+    self.Bind(wx.stc.EVT_STC_CHARADDED, self.OnCharAdded)
+
+  def OnCharAdded(self, event):
+    if self.indenter != None:
+      self.indenter.AutoIndent(event.GetKey())
+
+    event.Skip()
 
   def GetSyntaxConfig(self):
     if self.filename != None:
@@ -69,6 +78,11 @@ class Editor(wx.stc.StyledTextCtrl):
       self.SetLexer(syntaxConfig['lexer'])
       self.SetStyleBits(syntaxConfig['style_bits'])
       self.SetKeyWords(syntaxConfig['keyword_index'], syntaxConfig['keywords'])
+
+      self.indenter = None
+      if 'indent_style' in syntaxConfig:
+        if syntaxConfig['indent_style'] == 'cindent':
+          self.indenter = CIndent(self)
 
       styles = syntaxConfig['styles']
 
