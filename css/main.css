@@ -7,19 +7,39 @@ html, body
 body
 {
   font-family: Tahoma, Arial, Verdana, sans-serif;
-  background-color: gray;
+  background-color: white;
   margin-bottom: 100px;
-  background: -webkit-gradient(linear, left top, left bottom, from(gray), to(#ccc));
-  background: -moz-linear-gradient(top,  gray,  #ccc);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#808080', endColorstr='#cccccc');
 }
 
 .container
 {
   width: 60%;
   margin: 0 auto;
+  color: #777;
   text-align: center;
-  color: white;
+}
+
+.header {
+  overflow: hidden;
+  padding-top: 2em;
+  text-align: right;
+}
+
+.header img
+{
+	float: left;
+}
+
+.header img.name
+{
+	margin-top: 8px;
+}
+
+.header h2,
+.header p {
+	clear: both;
+	margin: 0;
+	padding: 0;
 }
 
 .section
@@ -29,15 +49,15 @@ body
   border-radius: 10px;
   behavior: url(border-radius.htc);
   text-align: left;
-  background-color: white;
-  color: black;
+  background-color: #ddd;
+  color: #555;
   padding: 5px 10px;
   margin: 20px 0;
 }
 
 .section p
 {
-  color: gray;
+  color: #555;
   font-size: 90%;
 }
 
@@ -49,8 +69,8 @@ body
 
 pre
 {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: #333;
   font-family: monospace;
   display: block;
   padding: 10px 0px;
