@@ -2,6 +2,16 @@
 
 import sys
 import os
+
+# fix sys.path for Mac OS X App Bundle
+if (sys.frozen == 'macosx_app'):
+  prefix = os.environ['RESOURCEPATH']
+  path = os.path.join(prefix, 'lib', 'python' + sys.version[:3], 'lib-dynload')
+
+  sys.path.reverse()
+  sys.path.append(path)
+  sys.path.reverse()
+
 import wx
 import wx.stc
 import wx.aui

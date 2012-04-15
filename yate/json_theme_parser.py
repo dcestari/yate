@@ -1,3 +1,4 @@
+import sys
 import os
 import json
 from style import Style
@@ -9,9 +10,13 @@ def loadTheme(filename):
   global default
   global styles
 
-  theme = json.load(open(os.path.join(os.path.dirname(__file__), filename)))
+  prefix = os.path.dirname(__file__)
+  if (sys.frozen == 'macosx_app'):
+    prefix = os.environ['RESOURCEPATH']
+
+  theme = json.load(open(os.path.join(prefix, filename)))
   default = theme['defaults']
-  
+
   for name in theme['styles']:
     style = theme['styles'][name]
 
