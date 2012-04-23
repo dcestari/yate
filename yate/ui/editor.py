@@ -41,6 +41,7 @@ class Editor(wx.stc.StyledTextCtrl):
 
     self.StyleSetBackground(style=wx.stc.STC_STYLE_DEFAULT, back=theme.default["background"])
     self.StyleSetForeground(style=wx.stc.STC_STYLE_DEFAULT, fore=theme.default["foreground"])
+    self.StyleSetSpec(wx.stc.STC_STYLE_DEFAULT, theme.styles['default'].GetStyleString())
     self.SetCaretForeground(fore=theme.default["caret"])
 
     # selection
