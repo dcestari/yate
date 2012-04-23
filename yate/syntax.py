@@ -1,4 +1,5 @@
 import wx
+import wx.stc
 
 config = {
   'php' : {

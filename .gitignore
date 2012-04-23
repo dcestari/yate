@@ -1,6 +1,6 @@
 dist
 build
 *.egg-info
-**/*.pyc
+*.pyc
 .DS_Store
 
