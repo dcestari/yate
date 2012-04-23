@@ -30,7 +30,7 @@ setup(name='yate',
       },
       entry_points={
         'console_scripts': [
-          'yate = yate.yate:main'
+          'yate = yate.main:main'
         ]
       }
 )
