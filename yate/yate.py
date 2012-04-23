@@ -4,7 +4,7 @@ import sys
 import os
 
 # fix sys.path for Mac OS X App Bundle
-if (sys.frozen == 'macosx_app'):
+if (hasattr(sys, 'frozen') and sys.frozen == 'macosx_app'):
   prefix = os.environ['RESOURCEPATH']
   path = os.path.join(prefix, 'lib', 'python' + sys.version[:3], 'lib-dynload')
 

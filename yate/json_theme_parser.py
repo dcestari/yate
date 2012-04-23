@@ -11,7 +11,7 @@ def loadTheme(filename):
   global styles
 
   prefix = os.path.dirname(__file__)
-  if (sys.frozen == 'macosx_app'):
+  if (hasattr(sys, 'frozen') and sys.frozen == 'macosx_app'):
     prefix = os.environ['RESOURCEPATH']
 
   theme = json.load(open(os.path.join(prefix, filename)))
