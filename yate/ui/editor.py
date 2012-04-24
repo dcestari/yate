@@ -41,7 +41,6 @@ class Editor(wx.stc.StyledTextCtrl):
 
     self.StyleSetBackground(style=wx.stc.STC_STYLE_DEFAULT, back=theme.default["background"])
     self.StyleSetForeground(style=wx.stc.STC_STYLE_DEFAULT, fore=theme.default["foreground"])
-    self.StyleSetSpec(wx.stc.STC_STYLE_DEFAULT, theme.styles['default'].GetStyleString())
     self.SetCaretForeground(fore=theme.default["caret"])
 
     # selection
@@ -54,6 +53,9 @@ class Editor(wx.stc.StyledTextCtrl):
       self.SetCaretLineBackAlpha(int(theme.default["lineHighlight"][7:]))
 
     self.SetCaretLineVisible(True)
+
+    if ('default' in theme.styles):
+      self.StyleSetSpec(wx.stc.STC_STYLE_DEFAULT, theme.styles['default'].GetStyleString())
 
     # reset all to be like the default
     self.StyleClearAll()
