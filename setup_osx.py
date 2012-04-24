@@ -7,12 +7,13 @@ Usage:
 
 from setuptools import setup
 
-APP = ['yate/yate.py']
+APP = ['yate/main.py']
 DATA_FILES = ['yate/']
 OPTIONS = {'argv_emulation': True, 'site_packages': True}
 
 setup(
     app=APP,
+    name='Yate',
     data_files=DATA_FILES,
     options={'py2app': OPTIONS},
     setup_requires=['py2app'],
